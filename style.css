@@ -1,0 +1,108 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 10px;
+   }
+
+body {
+   box-sizing: border-box;
+}
+
+.game-window {
+    position: relative;
+    background-image: url(images/GameBackground.png);
+    height: 80vh;
+    width: 100%;
+}
+
+.character-window {
+    display: none;
+    position: absolute;
+    height: 62rem;
+    width: 43.8rem;
+    left: 0;
+}
+
+.character-name {
+    display: inline-block;
+    color: white;
+    padding: 3%;
+    margin: auto;
+    font-size: 2rem;
+    width: 100%;
+    height: 8%;
+}
+
+.character-level {
+    display: inline-block;
+    color: white;
+    padding: 3%;
+    margin: auto;
+    font-size: 2rem;
+    width: 100%;
+    height: 8%;
+}
+
+.character-portrait {
+    display: inline-block;
+    padding: 3%;
+    margin: auto;
+    font-size: 2rem;
+    color: red;
+    height: 100%;
+    width: 100%;
+}
+
+.enemy-window {
+    display: block;
+    position: absolute;
+    height: 62rem;
+    width: 43.8rem;
+    right: 0;
+}
+
+.enemy-name {
+    display: inline-block;
+    color: white;
+    padding: 3%;
+    margin: auto;
+    font-size: 2rem;
+    width: 100%;
+    height: 8%;
+}
+
+.enemy-level {
+    display: inline-block;
+    color: white;
+    padding: 3%;
+    margin: auto;
+    font-size: 2rem;
+    width: 100%;
+    height: 8%;
+}
+
+.enemy-portrait {
+    display: inline-block;
+    background-image: url(images/Skeleton.png);
+    padding: 3%;
+    margin: auto;
+    font-size: 2rem;
+    color: red;
+    height: 100%;
+    width: 100%;
+}
+
+.user-interface {
+    display: block;
+    background-image: url(images/Test.png);
+    position: relative;
+    height: 20vh;
+    width:100%;
+    background-repeat: no-repeat;
+}
