@@ -267,6 +267,7 @@ p {
     width: 18vw;
     top: 57.5vh;
     border-radius: 2rem;
+    outline: none;
 }
 
 .attack:hover, .flee:hover, .find-opponent:hover {
@@ -291,11 +292,11 @@ p {
     display: block;
     position: absolute;
     bottom: 1vh;
-    left: 8vw;
+    left: 7.2vw;
     height: 18vh;
-    width: 15vw;
+    width: 16vw;
     border: solid black;
-    border-radius: 40%;
+    border-radius: 5%;
 }
 
 .character-wrap:hover {
@@ -310,7 +311,7 @@ p {
     background-position: center;
     position: absolute;
     left: 0;
-    top: 1vh;
+    top: 0;
     height: 14vh;
     width: 15vw;
 }
@@ -318,24 +319,25 @@ p {
 .character-label {
     display: inline-block;
     position: absolute;
-    font-size: 1.5rem;
+    font-size: 2vw;
     font-weight: bold;
     height: 2vh;
-    width: 15vw;
+    width: 16vw;
     bottom: 0.5vh;
-    left: 0;
+    left: -.2vw;
     text-align: center;
+    line-height: 1vh;
 }
 
 .invetory-wrap {
     display: block;
     position: absolute;
     bottom: 1vh;
-    left: 31vw;
+    left: 30.4vw;
     height: 18vh;
-    width: 15vw;
+    width: 16vw;
     border: solid black;
-    border-radius: 40%;
+    border-radius: 5%;
 }
 
 .invetory-wrap:hover {
@@ -350,32 +352,33 @@ p {
     background-position: center;
     position: absolute;
     left: 0;
-    top: 1vh;
+    top: 0;
     height: 14vh;
-    width: 15vw;
+    width: 16vw;
 }
 
 .inventory-label {
     display: inline-block;
     position: absolute;
-    font-size: 1.5rem;
+    font-size: 2vw;
     font-weight: bold;
     height: 2vh;
-    width: 15vw;
+    width: 16vw;
     bottom: 0.5vh;
     left: 0;
     text-align: center;
+    line-height: 1vh;
 }
 
 .map-wrap {
     display: block;
     position: absolute;
     bottom: 1vh;
-    left: 54vw;
+    left: 53.6vw;
     height: 18vh;
-    width: 15vw;
+    width: 16vw;
     border: solid black;
-    border-radius: 40%;
+    border-radius: 5%;
 }
 
 .map-wrap:hover {
@@ -390,32 +393,33 @@ p {
     background-position: center;
     position: absolute;
     left: 0;
-    top: 1vh;
+    top: 0;
     height: 14vh;
-    width: 15vw;
+    width: 16vw;
 }
 
 .map-label {
     display: inline-block;
     position: absolute;
-    font-size: 1.5rem;
+    font-size: 2vw;
     font-weight: bold;
     height: 2vh;
-    width: 15vw;
+    width: 16vw;
     bottom: 0.5vh;
     left: 0;
     text-align: center;
+    line-height: 1vh;
 }
 
 .enemy-wrap {
     display: block;
     position: absolute;
     bottom: 1vh;
-    left: 77vw;
+    left: 76.8vw;
     height: 18vh;
-    width: 15vw;
+    width: 16vw;
     border: solid black;
-    border-radius: 40%;
+    border-radius: 5%;
 }
 
 .enemy-wrap:hover {
@@ -430,7 +434,7 @@ p {
     background-position: center;
     position: absolute;
     left: 0;
-    top: 1vh;
+    top: 0;
     height: 14vh;
     width: 15vw;
 }
@@ -438,11 +442,12 @@ p {
 .enemy-label {
     display: inline-block;
     position: absolute;
-    font-size: 1.5rem;
+    font-size: 2vw;
     font-weight: bold;
     height: 2vh;
     width: 15vw;
     bottom: 0.5vh;
     left: 0;
     text-align: center;
+    line-height: 1vh;
 }
