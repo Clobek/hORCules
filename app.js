@@ -86,7 +86,7 @@ const chooseMale = () => {
 const chooseFemale = () => {
     $('.character-portrait').css('background-image', 'url(images/FemaleOrc.png)');
     $('#femaleButton').css('background-color', 'blue');
-    $('#maleButton').css('background-color', 'grey')
+    $('#maleButton').css('background-color', 'grey');
     genderKey = true;
 }
 
@@ -96,14 +96,20 @@ const finalize = () => {
         $('.character-window').css('display', 'block');
         $('.character-level').text(`Level: ${player.level}  ${player.experience}/${player.experienceToLevel}`);
     } else {
-        alert('Please select a gender.')
+        alert('Please select a gender.');
     }
 }
 
 const newEnemy = () => {
-    if (location === 'Spiteful Hills') {
+    if (location === 'Spiteful Hills' && enemy === null) {
         enemy = new Goblin(goblinNames[Math.floor(Math.random()*goblinNames.length-1)]);
-        $('.enemy-portriat').css('background-image', 'url(images/Goblin.png)')
+        $('.enemy-portriat').css('background-image', 'url(images/Goblin.png)');
+        $('.enemy-window').css('display', 'block');
+    } else if (location === 'Necropolis' && enemy === null) {
 
+    } else if (location === 'Troll Caves' && enemy === null) {
+
+    } else {
+        alert('Defeat your current enemy before moving to another!')
     }
 }

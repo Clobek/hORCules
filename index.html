@@ -38,18 +38,40 @@
             <div class="character-name">Name:</div>
             <div class="character-level">Level:</div>
             <div class="character-experience">Experience:</div>
-            <div class="character-experience">Health:</div>
+            <div class="character-health">Health:</div>
             <div class="character-portrait"></div>
         </div>
         <div class="enemy-window">
             <div class="enemy-name">Name:</div>
             <div class="enemy-level">Level:</div>
+            <div class="enemy-health">Health:</div>
             <div class="enemy-portrait"></div>
         </div>
     </div>
-    <div class="user-interface">
-        <div class="character-info"></div>
-        <div class="character-inventory"></div>
+    <div class="user-options">
+        <input class="find-opponent" type="button" value="Search" onclick="newEnemy()">
+        <input class="flee" type="button" value="Run" onclick="flee()">
+        <input class="attack" type="button" value="Attack" onclick="player.attack()">
+    </div>
+    <div class="ui">
+        <div class="user-interface">
+            <div class="character-wrap">
+                <div class="character-info"></div>
+                <div class="character-label">Character Stats</div>
+            </div>
+            <div class="invetory-wrap">
+                <div class="character-inventory"></div>
+                <div class="inventory-label">Inventory</div>
+            </div>
+            <div class="map-wrap">
+                <div class="character-map"></div>
+                <div class="map-label">Map</div>
+            </div>
+            <div class="enemy-wrap">
+                <div class="enemy-info"></div>
+                <div class="enemy-label">Enemy Stats</div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
