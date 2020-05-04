@@ -234,7 +234,7 @@ p {
     font-size: 2rem;
     height: 10vh;
     width: 18vw;
-    top: 12.5vh;
+    top: 57.5vh;
     left: 0;
     border-radius: 2rem;
     outline: none;
@@ -249,7 +249,7 @@ p {
     font-size: 2rem;
     height: 10vh;
     width: 18vw;
-    top: 35vh;
+    top: 12.5vh;
     border-radius: 2rem;
     outline: none;
 }
@@ -263,7 +263,7 @@ p {
     font-size: 2rem;
     height: 10vh;
     width: 18vw;
-    top: 57.5vh;
+    top: 35vh;
     border-radius: 2rem;
     outline: none;
 }
