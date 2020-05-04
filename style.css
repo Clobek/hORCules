@@ -10,61 +10,195 @@ html {
     font-size: 10px;
    }
 
+
 body {
    box-sizing: border-box;
 }
 
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    padding: 10px 0;
+}
+
+p {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.modal {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    overflow: auto;
+}
+
+.modal-intro, .modal-name, .modal-gender {
+    display: inline-block;
+    position: absolute;
+    background-color: white;
+    height: 50vh;
+    width: 50vw;
+    margin: 25vh 25vw;
+    border-radius: 1rem;
+}
+
+.modal-intro {
+    z-index: 4;
+}
+
+.modal-name {
+    z-index: 3;
+}
+
+.modal-gender {
+    z-index: 2;
+}
+
+#nextModal {
+    display: inline-block;
+    background-color: blue;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    left: 25%;
+    margin: 2rem 0;
+    border-radius: 2rem;
+}
+
+#nextModal:hover, #nameButton:hover, #finalize:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
+#nameInput {
+    display: inline-block;
+    position: absolute;
+    width: 50%;
+    padding: 1rem;
+    font-size: 2rem;
+    height: 10%;
+    left: 5%;
+    bottom: 40%;
+}
+
+#nameButton {
+    display: inline-block;
+    position: absolute;
+    background-color: blue;
+    font-weight: bold;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    width: 20%;
+    height: 10%;
+    right: 10%;
+    bottom: 40%;
+}
+
+#femaleButton {
+    display: inline-block;
+    position: absolute;
+    background-color: grey;
+    font-weight: bold;
+    color: white;
+    width: 40%;
+    padding: 1rem;
+    font-size: 2rem;
+    height: 10%;
+    right: 5%;
+    bottom: 50%;
+}
+
+#maleButton {
+    display: inline-block;
+    position: absolute;
+    background-color: grey;
+    font-weight: bold;
+    color: white;
+    width: 40%;
+    padding: 1rem;
+    font-size: 2rem;
+    height: 10%;
+    left: 5%;
+    bottom: 50%;
+}
+
+#finalize {
+    display: inline-block;
+    position: absolute;
+    background-color: blue;
+    font-weight: bold;
+    color: white;
+    width: 40%;
+    padding: 1rem;
+    font-size: 2rem;
+    height: 10%;
+    left: 30%;
+    bottom: 10%;
+}
+
+#maleButton:hover, #femaleButton:hover {
+    background-color: blue;
+    cursor: pointer;
+}
+
 .game-window {
-    position: relative;
     background-image: url(images/GameBackground.png);
+    background-size: cover;
     height: 80vh;
-    width: 100%;
+    width: 100vw;
 }
 
 .character-window {
-    display: none;
+    display: block;
     position: absolute;
-    height: 62rem;
-    width: 43.8rem;
+    height: 80vh;
+    width: 40vw;
     left: 0;
+    top: 0;
+    border: solid white;
 }
 
-.character-name {
+.character-name, .character-level, .character-experience {
     display: inline-block;
     color: white;
-    padding: 3%;
     margin: auto;
     font-size: 2rem;
-    width: 100%;
-    height: 8%;
-}
-
-.character-level {
-    display: inline-block;
-    color: white;
-    padding: 3%;
-    margin: auto;
-    font-size: 2rem;
-    width: 100%;
-    height: 8%;
+    width: 40vw;
+    height: 5vh;
+    border: solid white;
 }
 
 .character-portrait {
     display: inline-block;
-    padding: 3%;
-    margin: auto;
+    background-image: url(images/FemaleOrc.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
     font-size: 2rem;
-    color: red;
-    height: 100%;
-    width: 100%;
+    height: 60vh;
+    width: 40vw;
+    border: solid white;
 }
 
 .enemy-window {
-    display: block;
+    display: none;
     position: absolute;
     height: 62rem;
     width: 43.8rem;
     right: 0;
+    top: 0;
 }
 
 .enemy-name {
@@ -89,7 +223,6 @@ body {
 
 .enemy-portrait {
     display: inline-block;
-    background-image: url(images/Skeleton.png);
     padding: 3%;
     margin: auto;
     font-size: 2rem;
@@ -100,9 +233,9 @@ body {
 
 .user-interface {
     display: block;
-    background-image: url(images/Test.png);
-    position: relative;
+    background-image: url(images/UI.png);
+    position: absolute;
     height: 20vh;
-    width:100%;
+    width: 100vw;
     background-repeat: no-repeat;
 }
