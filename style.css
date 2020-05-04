@@ -99,7 +99,7 @@ p {
     font-weight: bold;
     color: white;
     font-size: 2rem;
-    padding: 1rem;
+    padding: .5rem;
     width: 20%;
     height: 10%;
     right: 10%;
@@ -141,7 +141,7 @@ p {
     font-weight: bold;
     color: white;
     width: 40%;
-    padding: 1rem;
+    padding: .5rem;
     font-size: 2rem;
     height: 10%;
     left: 30%;
@@ -161,7 +161,7 @@ p {
 }
 
 .character-window {
-    display: block;
+    display: none;
     position: absolute;
     height: 80vh;
     width: 40vw;
@@ -172,24 +172,23 @@ p {
 .character-name, .character-level, .character-experience, .character-health {
     display: inline-block;
     color: white;
-    font-size: 3rem;
+    font-size: 2.5vw;
     width: 40vw;
     height: 5vh;
-    padding-left: 5vw;
+    text-align: center;
 }
 
 .character-portrait {
     display: inline-block;
-    background-image: url(images/FemaleOrc.png);
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: center bottom;
     background-size: contain;
     height: 60vh;
     width: 40vw;
 }
 
 .enemy-window {
-    display: block;
+    display: none;
     position: absolute;
     height: 80vh;
     width: 40vw;
@@ -200,26 +199,23 @@ p {
 .enemy-name, .enemy-level, .enemy-health{
     display: inline-block;
     color: white;
-    font-size: 3rem;
+    font-size: 2.5vw;
     width: 40vw;
     height: 6.66vh;
-    padding-left: 5vw;
-    text-align: right;
-    padding-right: 20vw;
+    text-align: center;
 }
 
 .enemy-portrait {
     display: inline-block;
-    background-image: url(images/Goblin.png);
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: center bottom;
     background-size: contain;
     height: 60vh;
     width: 40vw;
 }
 
 .user-options {
-    display: block;
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -241,6 +237,7 @@ p {
     top: 12.5vh;
     left: 0;
     border-radius: 2rem;
+    outline: none;
 }
 
 .flee {
@@ -254,6 +251,7 @@ p {
     width: 18vw;
     top: 35vh;
     border-radius: 2rem;
+    outline: none;
 }
 
 .attack {
@@ -285,7 +283,7 @@ p {
 }
 
 .user-interface {
-    display: block;
+    display: none;
 }
 
 .character-wrap {
