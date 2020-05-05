@@ -1,7 +1,7 @@
 let player = null;
 let playerName = null;
 let genderKey = false;
-let changeLocation = 'Spiteful Hills';
+let changeLocation = 'Spiteful Forest';
 let enemy = null;
 let characterStats = false;
 let inventory = false;
@@ -85,7 +85,43 @@ class Player {
 class Goblin {
     constructor (name) {
         this.name = name;
-        this.level = Math.floor(Math.random()*(5-1)+1);
+        this.level = Math.floor(Math.random()*(5-1+1)+1);
+        this.giveExperience = 25+this.level*50;
+        this.strength = 2+this.level;
+        this.stamina = 1+this.level;
+        this.dexterity = this.level;
+        this.agility = this.level;
+        this.maxHealth = this.stamina*5;
+        this.currentHealth = this.stamina*5;
+        this.maxHit = this.strength*2;
+        this.minHit = this.agility*2;
+        this.accuracy = 70 + (this.agility/2)
+    }
+    attack(opponent){
+        opponent = player
+        const dmg = Math.floor(Math.random()*(this.maxHit - this.minHit)) + this.minHit;
+        if (enemy.accuracy > Math.floor(Math.random()*100)+1) {
+            player.currentHealth -= dmg;
+            $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`)
+            if(player.currentHealth <= 0) {
+                alert('You died! Luckily the gods favor you and have brought you back... your penalty is half of your experience.')
+                player.experience -= Math.floor(player.experience/2)
+                $('.character-experience').text(`Experience: ${player.experience}/${player.experienceToLevel}`);
+                player.currentHealth += player.maxHealth - player.currentHealth
+                $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
+                enemy = null;
+                $('.enemy-window').css('display', 'none');
+            }
+        } else {
+            alert('Enemy missed!')
+        }
+    }
+}
+
+class Skeleton {
+    constructor (name) {
+        this.name = name;
+        this.level = Math.floor(Math.random()*(10-5+1)+5);
         this.giveExperience = 50+this.level*40;
         this.strength = 2+this.level;
         this.stamina = 2+this.level;
@@ -164,7 +200,7 @@ const finalize = () => {
 }
 
 const newEnemy = () => {
-    if (changeLocation === 'Spiteful Hills' && enemy === null) {
+    if (changeLocation === 'Spiteful Forest' && enemy === null) {
         enemy = new Goblin(goblinNames[Math.floor(Math.random()*goblinNames.length-1)]);
         $('.enemy-portrait').css('background-image', 'url(images/Goblin.png)');
         $('.enemy-window').css('display', 'block');
@@ -175,6 +211,8 @@ const newEnemy = () => {
 
     } else if (changeLocation === 'Troll Caves' && enemy === null) {
 
+    } else if (changeLocation === 'Tavern' && enemy === null) {
+        alert('There are no enemies here.')
     } else {
         alert('Defeat your current enemy before moving to another!')
     }
@@ -206,4 +244,52 @@ $('.enemy-wrap').on('click', ()=>{
 
 $('.exit-enemy-stats').on('click', ()=>{
     $('.enemy-stats-modal').css('display', 'none')
+})
+
+$('.map-wrap').on('click', ()=>{
+    if (enemy !== null) {
+        alert('You cannot travel while in combat.')
+    } else {
+        $('.map-modal').css('display', 'block')
+    }
+})
+
+$('.exit-map').on('click', ()=>{
+    $('.map-modal').css('display', 'none')
+})
+
+$('.round-button-spiteful-forest').on('click', ()=>{
+    changeLocation = 'Spiteful Forest';
+    $('.round-button-spiteful-forest').css('background-image', 'url(none)');
+    $('.round-button-tavern').css('background-image', 'url(images/Tavern.jpg)')
+    $('.round-button-necropolis').css('background-image', 'url(images/Necropolis.jpeg)')
+    $('.round-button-troll-caves').css('background-image', 'url(images/TrollCaves.jpg)')
+    $('.game-window').css('background-image', 'url(images/SpitefulForest.jpeg)')
+})
+
+$('.round-button-tavern').on('click', ()=>{
+    changeLocation = 'Tavern';
+    $('.round-button-tavern').css('background-image', 'url(none)');
+    $('.round-button-spiteful-forest').css('background-image', 'url(images/SpitefulForest.jpeg)')
+    $('.round-button-necropolis').css('background-image', 'url(images/Necropolis.jpeg)')
+    $('.round-button-troll-caves').css('background-image', 'url(images/TrollCaves.jpg)')
+    $('.game-window').css('background-image', 'url(images/Tavern.jpg)')
+})
+
+$('.round-button-necropolis').on('click', ()=>{
+    changeLocation = 'Necropolis';
+    $('.round-button-necropolis').css('background-image', 'url(none)');
+    $('.round-button-spiteful-forest').css('background-image', 'url(images/SpitefulForest.jpeg)')
+    $('.round-button-tavern').css('background-image', 'url(images/Tavern.jpg)')
+    $('.round-button-troll-caves').css('background-image', 'url(images/TrollCaves.jpg)')
+    $('.game-window').css('background-image', 'url(images/Necropolis.jpeg)')
+})
+
+$('.round-button-troll-caves').on('click', ()=>{
+    changeLocation = 'Troll Caves';
+    $('.round-button-troll-caves').css('background-image', 'url(none)');
+    $('.round-button-spiteful-forest').css('background-image', 'url(images/SpitefulForest.jpeg)')
+    $('.round-button-necropolis').css('background-image', 'url(images/Necropolis.jpeg)')
+    $('.round-button-tavern').css('background-image', 'url(images/Tavern.jpg)')
+    $('.game-window').css('background-image', 'url(images/TrollCaves.jpg)')
 })
