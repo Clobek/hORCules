@@ -18,7 +18,7 @@ body {
 h1 {
     font-size: 2.5vw;
     text-align: center;
-    padding: 10px 0;
+    padding: 2vh 0;
 }
 
 p {
@@ -275,7 +275,7 @@ p {
 
 .ui {
     display: block;
-    background-image: url(images/UI.png);
+    background-image: url(images/UIBackground.png);
     position: absolute;
     height: 20vh;
     width: 100vw;
@@ -448,4 +448,64 @@ p {
     left: 0;
     text-align: center;
     line-height: 1vh;
+}
+
+
+
+.character-stats-modal, .enemy-stats-modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    overflow: auto;
+}
+
+.character-stats-background, .enemy-stats-background {
+    display: inline-block;
+    position: absolute;
+    background-image: url(images/UI.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40vw;
+    width: 80vw;
+    margin: 10vh 10vw;
+}
+
+.character-stats-wrap, .enemy-stats-wrap {
+    width: 80%;
+    height: 90%;
+    margin: 2.5% 10%;
+}
+
+.character-stats-wrap > *, .enemy-stats-wrap > * {
+    display: inline-block;
+    position: relative;
+    font-size: 3vw;
+    width: 80%;
+    margin: .1% 10%;
+    height: 14%;
+}
+
+.head {
+    text-align: center;
+    font-weight: bold;
+    font-size: 4vw;
+}
+
+.exit-character-stats, .exit-enemy-stats {
+    background-image: url(images/Exit.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: inline-block;
+    position: absolute;
+    width: 5vw;
+    height: 5vw;
+    top: 0;
+    right: 0;
 }

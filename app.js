@@ -3,6 +3,10 @@ let playerName = null;
 let genderKey = false;
 let changeLocation = 'Spiteful Hills';
 let enemy = null;
+let characterStats = false;
+let inventory = false;
+let map = false;
+let enemyStats = false;
 
 const goblinNames = ['Bylb', 'Oiz', 'Plokx', 'Glut', 'Ix', 'Drezlos', 'Ylserd', 'Fabukt', 'Gnirvazz', 'Glegract', 'Taassai', 'Clals', 'Myhx', 'Eaxa', 'Swiortee', 'Dysseaft', 'Ranviolda', 'Chertohx', 'Slokniag', 'Gritbenqea']
 
@@ -175,3 +179,31 @@ const newEnemy = () => {
         alert('Defeat your current enemy before moving to another!')
     }
 }
+
+$('.character-wrap').on('click', ()=>{
+    $('.character-strength').text(`Strength: ${player.strength}`)
+    $('.character-stamina').text(`Stamina: ${player.stamina}`)
+    $('.character-dexterity').text(`Dexterity: ${player.dexterity}`)
+    $('.character-agility').text(`Agility: ${player.agility}`)
+    $('.character-hit-range').text(`Damage Range: ${player.minHit}-${player.maxHit}`)
+    $('.character-hit-chance').text(`Accuracy: ${player.accuracy}%`)
+    $('.character-stats-modal').css('display', 'block')
+})
+
+$('.exit-character-stats').on('click', ()=>{
+    $('.character-stats-modal').css('display', 'none')
+})
+
+$('.enemy-wrap').on('click', ()=>{
+    $('.enemy-strength').text(`Strength: ${enemy.strength}`)
+    $('.enemy-stamina').text(`Stamina: ${enemy.stamina}`)
+    $('.enemy-dexterity').text(`Dexterity: ${enemy.dexterity}`)
+    $('.enemy-agility').text(`Agility: ${enemy.agility}`)
+    $('.enemy-hit-range').text(`Damage Range: ${enemy.minHit}-${enemy.maxHit}`)
+    $('.enemy-hit-chance').text(`Accuracy: ${enemy.accuracy}%`)
+    $('.enemy-stats-modal').css('display', 'block')
+})
+
+$('.exit-enemy-stats').on('click', ()=>{
+    $('.enemy-stats-modal').css('display', 'none')
+})
