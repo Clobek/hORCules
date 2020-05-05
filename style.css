@@ -461,11 +461,6 @@ p {
     overflow: auto;
 }
 
-.map-modal {
-    display: block;
-    z-index: 20;
-}
-
 .character-stats-background, .enemy-stats-background, .map-background {
     display: inline-block;
     position: absolute;
