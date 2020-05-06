@@ -8,9 +8,13 @@ let inventory = false;
 let map = false;
 let enemyStats = false;
 
-const goblinNames = ['Bylb', 'Oiz', 'Plokx', 'Glut', 'Ix', 'Drezlos', 'Ylserd', 'Fabukt', 'Gnirvazz', 'Glegract', 'Taassai', 'Clals', 'Myhx', 'Eaxa', 'Swiortee', 'Dysseaft', 'Ranviolda', 'Chertohx', 'Slokniag', 'Gritbenqea']
+const goblinNames = ['Bylb', 'Oiz', 'Plokx', 'Glut', 'Ix', 'Drezlos', 'Ylserd', 'Fabukt', 'Gnirvazz', 'Glegract', 'Taassai', 'Clals', 'Myhx', 'Eaxa', 'Swiortee', 'Dysseaft', 'Ranviolda', 'Chertohx', 'Slokniag', 'Gritbenqea', 'Cliez', 'Firm', 'Akz', 'Trezz', 'Brisb', 'Kraakvurm', 'Azdaz', 'Gialzoil', 'Liliord', 'Jegherd'];
 
-const experienceArray = ["There is no level 0", 1000, 1500, 2000, 2500, 5000, 6000, 7000, 8500, 10000]
+const skeletonNames = ["Jut", "Buz", "Vox", "Bilkrag", "Gotzaug", "Ukgouk", "Slatewalker", "Zax", "Khaujaz", "Bugox", "Rit", "Jax", "Khaq", "Ummoc", "Obat", "Khubnat", "Khuk", "Ruzzoq", "Kulgrat", "Uzboz", "Vaz", "Buq", "Rux", "Umgid", "Gojok", "Agzog", "Kic", "Guz", "Kaqut", "Bonzuc", "Chirdroq"];
+
+const trollNames = ["Sollix", "Juma", "Nyabingi", "Matuna", "Kaijin", "Yawan", "Dorkuraz", "Equinus", "Rashi", "Yawan", "Zeti", "Benni", "Boonoo", "Moza", "Vanjin", "Kanjin", "Kizi", "Tsaijo", "Jozala", "Kululu", "Hoodah", "Zulbaljin", "Trezzahn", "Rapshider", "Mohanlal", "Tazingo", "Nyabingi", "Jinjin", "Paikei", "Venjo"];
+
+const experienceArray = ["There is no level 0", 500, 1000, 3000, 6000, 10000, 15000, 21000, 28000, 36000, 45000, 55000, 66000, 78000, 91000];
 
 class Player {
     constructor (name) {
@@ -69,8 +73,8 @@ class Player {
         this.currentHealth = this.stamina*5;
         this.maxHit = this.strength*2;
         this.minHit = this.dexterity*2;
-        this.accuracy = 80 + (this.agility/2)
-        $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
+        this.accuracy = 80 + (this.agility/2);
+        player.heal();
     }
     run() {
         if (enemy === null) {
@@ -80,13 +84,18 @@ class Player {
             enemy = null;
         }
     }
+    rest() {
+        player.currentHealth += player.maxHealth - player.currentHealth;
+        $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
+        alert('You feel rested.');
+    }
 }
 
 class Goblin {
     constructor (name) {
         this.name = name;
         this.level = Math.floor(Math.random()*(5-1+1)+1);
-        this.giveExperience = 25+this.level*50;
+        this.giveExperience = 50+this.level*50;
         this.strength = 2+this.level;
         this.stamina = 1+this.level;
         this.dexterity = this.level;
@@ -122,7 +131,43 @@ class Skeleton {
     constructor (name) {
         this.name = name;
         this.level = Math.floor(Math.random()*(10-5+1)+5);
-        this.giveExperience = 50+this.level*40;
+        this.giveExperience = 100+this.level*100;
+        this.strength = 2+this.level;
+        this.stamina = 2+this.level;
+        this.dexterity = 1+this.level;
+        this.agility = 1+this.level;
+        this.maxHealth = this.stamina*5;
+        this.currentHealth = this.stamina*5;
+        this.maxHit = this.strength*2;
+        this.minHit = this.agility*2;
+        this.accuracy = 70 + (this.agility/2)
+    }
+    attack(opponent){
+        opponent = player
+        const dmg = Math.floor(Math.random()*(this.maxHit - this.minHit)) + this.minHit;
+        if (enemy.accuracy > Math.floor(Math.random()*100)+1) {
+            player.currentHealth -= dmg;
+            $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`)
+            if(player.currentHealth <= 0) {
+                alert('You died! Luckily the gods favor you and have brought you back... your penalty is half of your experience.')
+                player.experience -= Math.floor(player.experience/2)
+                $('.character-experience').text(`Experience: ${player.experience}/${player.experienceToLevel}`);
+                player.currentHealth += player.maxHealth - player.currentHealth
+                $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
+                enemy = null;
+                $('.enemy-window').css('display', 'none');
+            }
+        } else {
+            alert('Enemy missed!')
+        }
+    }
+}
+
+class Troll{
+    constructor (name) {
+        this.name = name;
+        this.level = Math.floor(Math.random()*(15-10+1)+10);
+        this.giveExperience = 300+this.level*200;
         this.strength = 2+this.level;
         this.stamina = 2+this.level;
         this.dexterity = 1+this.level;
@@ -208,9 +253,19 @@ const newEnemy = () => {
         $('.enemy-level').text(`Level: ${enemy.level}`)
         $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
     } else if (changeLocation === 'Necropolis' && enemy === null) {
-
+        enemy = new Skeleton(skeletonNames[Math.floor(Math.random()*skeletonNames.length-1)]);
+        $('.enemy-portrait').css('background-image', 'url(images/Skeleton.png)');
+        $('.enemy-window').css('display', 'block');
+        $('.enemy-name').text(`Name: ${enemy.name}`);
+        $('.enemy-level').text(`Level: ${enemy.level}`)
+        $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
     } else if (changeLocation === 'Troll Caves' && enemy === null) {
-
+        enemy = new Troll(trollNames[Math.floor(Math.random()*trollNames.length-1)]);
+        $('.enemy-portrait').css('background-image', 'url(images/Troll.png)');
+        $('.enemy-window').css('display', 'block');
+        $('.enemy-name').text(`Name: ${enemy.name}`);
+        $('.enemy-level').text(`Level: ${enemy.level}`)
+        $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
     } else if (changeLocation === 'Tavern' && enemy === null) {
         alert('There are no enemies here.')
     } else {
@@ -265,6 +320,9 @@ $('.round-button-spiteful-forest').on('click', ()=>{
     $('.round-button-necropolis').css('background-image', 'url(images/Necropolis.jpeg)')
     $('.round-button-troll-caves').css('background-image', 'url(images/TrollCaves.jpg)')
     $('.game-window').css('background-image', 'url(images/SpitefulForest.jpeg)')
+    $('.map-modal').css('display', 'none')
+    $('.tavern-options').css('display', 'none');
+    $('.character-window').css('display', 'block');
 })
 
 $('.round-button-tavern').on('click', ()=>{
@@ -274,6 +332,9 @@ $('.round-button-tavern').on('click', ()=>{
     $('.round-button-necropolis').css('background-image', 'url(images/Necropolis.jpeg)')
     $('.round-button-troll-caves').css('background-image', 'url(images/TrollCaves.jpg)')
     $('.game-window').css('background-image', 'url(images/Tavern.jpg)')
+    $('.map-modal').css('display', 'none');
+    $('.tavern-options').css('display', 'block');
+    $('.character-window').css('display', 'none');
 })
 
 $('.round-button-necropolis').on('click', ()=>{
@@ -283,6 +344,9 @@ $('.round-button-necropolis').on('click', ()=>{
     $('.round-button-tavern').css('background-image', 'url(images/Tavern.jpg)')
     $('.round-button-troll-caves').css('background-image', 'url(images/TrollCaves.jpg)')
     $('.game-window').css('background-image', 'url(images/Necropolis.jpeg)')
+    $('.map-modal').css('display', 'none')
+    $('.tavern-options').css('display', 'none');
+    $('.character-window').css('display', 'block');
 })
 
 $('.round-button-troll-caves').on('click', ()=>{
@@ -292,4 +356,11 @@ $('.round-button-troll-caves').on('click', ()=>{
     $('.round-button-necropolis').css('background-image', 'url(images/Necropolis.jpeg)')
     $('.round-button-tavern').css('background-image', 'url(images/Tavern.jpg)')
     $('.game-window').css('background-image', 'url(images/TrollCaves.jpg)')
+    $('.map-modal').css('display', 'none')
+    $('.tavern-options').css('display', 'none');
+    $('.character-window').css('display', 'block');
 })
+
+const comingSoon = () => {
+    alert('Coming soon!')
+}

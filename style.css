@@ -219,7 +219,7 @@ p {
     width: 40vw;
 }
 
-.user-options {
+.user-options, .tavern-options {
     display: none;
     position: absolute;
     top: 0;
@@ -229,7 +229,7 @@ p {
     width: 18vw;
 }
 
-.find-opponent {
+.find-opponent, .rest {
     display: inline-block;
     position: absolute;
     word-wrap: initial;
@@ -245,7 +245,7 @@ p {
     outline: none;
 }
 
-.flee {
+.flee, .buy {
     display: inline-block;
     position: absolute;
     background-color: blue;
@@ -259,7 +259,7 @@ p {
     outline: none;
 }
 
-.attack {
+.attack, .sell {
     display: inline-block;
     position: absolute;
     background-color: blue;
@@ -273,7 +273,12 @@ p {
     outline: none;
 }
 
-.attack:hover, .flee:hover, .find-opponent:hover {
+.tavern-options {
+    display: none;
+    z-index: 2;
+}
+
+.attack:hover, .flee:hover, .find-opponent:hover, .buy:hover, .rest:hover, .sell:hover {
     background-color: red;
     transform: translateY(-0.2rem);
     cursor: pointer;
@@ -457,7 +462,7 @@ p {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    z-index: 3;
     overflow: auto;
 }
 
