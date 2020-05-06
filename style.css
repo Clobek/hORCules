@@ -310,7 +310,7 @@ p {
     border-radius: 5%;
 }
 
-.character-wrap:hover, .invetory-wrap:hover, .map-wrap:hover, .enemy-wrap:hover  {
+.character-wrap:hover, .inventory-wrap:hover, .map-wrap:hover, .enemy-wrap:hover  {
     background-color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
@@ -341,7 +341,7 @@ p {
     line-height: 1vh;
 }
 
-.invetory-wrap {
+.inventory-wrap {
     display: block;
     position: absolute;
     bottom: 1vh;
@@ -605,3 +605,53 @@ p {
     font-size: 1vw;
     text-align: center;
 }
+
+.character-damage {
+    display: block;
+    position: absolute;
+    width: 15vw;
+    height: 20vh;
+    bottom: 20vh;
+    left: 20vw;
+    z-index: 2;
+    font-size: 8vw;
+    text-align: center;
+    /* animation-name: damage-numbers;
+    animation-duration: 2s;
+    animation-iteration-count: infinite; */
+    color: red;
+    /* opacity: 0; */
+    line-height: 20vh;
+}
+
+.enemy-damage {
+    display: none;
+    position: absolute;
+    width: 15vw;
+    height: 20vh;
+    bottom: 20vh;
+    right: 20vw;
+    z-index: 2;
+    font-size: 8vw;
+    text-align: center;
+    /* animation-name: damage-numbers;
+    animation-duration: 2s;
+    animation-iteration-count: 1; */
+    color: red;
+    /* opacity: 0; */
+    line-height: 20vh;
+}
+
+/* @keyframes damage-numbers {
+    0% {opacity: 1; bottom: 20vh;}
+    10% {opacity: 0.9; bottom: 21vh}
+    20% {opacity: 0.8; bottom: 22vh}
+    30% {opacity: 0.7; bottom: 23vh}
+    40% {opacity: 0.6; bottom: 24vh}
+    50% {opacity: 0.5; bottom: 25vh}
+    60% {opacity: 0.4; bottom: 26vh}
+    70% {opacity: 0.3; bottom: 27vh}
+    80% {opacity: 0.2; bottom: 28vh}
+    90% {opacity: 0.1; bottom: 29vh}
+    100% {opacity: 0; bottom: 30vh}
+} */

@@ -34,7 +34,7 @@ class Player {
         this.accuracy = 80 + (this.agility/2)
     }
     attack(opponent){
-        opponent = enemy
+        opponent = enemy;
         const dmg = Math.floor(Math.random()*(this.maxHit - this.minHit)) + this.minHit;
         if (enemy === null || enemy === undefined) {
             alert('You do not currently have an enemy to attack.')
@@ -42,11 +42,15 @@ class Player {
             if (player.accuracy > Math.floor(Math.random()*100)+1) {
                 enemy.currentHealth -= dmg;
                 $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
+                $('.enemy-damage').text(`-${dmg}`);
+                $('.enemy-damage').css('display', 'block')           
                 if(enemy.currentHealth <= 0) {
                     $('.enemy-window').css('display', 'none');
                     player.experience += enemy.giveExperience
                     $('.character-experience').text(`Experience: ${player.experience}/${player.experienceToLevel}`);
                     enemy = null;
+                    $('.enemy-damage').text('');
+                    $('.character-damage').text('');
                     if (player.experience >= player.experienceToLevel) {
                         player.experience -= player.experienceToLevel;
                         player.levelUp();
@@ -55,7 +59,7 @@ class Player {
                     enemy.attack()
                 }
             } else {
-                alert('You missed!')
+                $('.enemy-damage').text(`Miss`)
                 enemy.attack()
             }
         }
@@ -73,8 +77,12 @@ class Player {
         this.currentHealth = this.stamina*5;
         this.maxHit = this.strength*2;
         this.minHit = this.dexterity*2;
-        this.accuracy = 80 + (this.agility/2);
         player.heal();
+        if (this.level >= 40) {
+            this.accuracy = 100;
+        } else {
+            this.accuracy = 80 + (this.agility/2);
+        }
     }
     run() {
         if (enemy === null) {
@@ -88,6 +96,10 @@ class Player {
         player.currentHealth += player.maxHealth - player.currentHealth;
         $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
         alert('You feel rested.');
+    }
+    heal() {
+        player.currentHealth += player.maxHealth - player.currentHealth;
+        $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
     }
 }
 
@@ -112,6 +124,7 @@ class Goblin {
         if (enemy.accuracy > Math.floor(Math.random()*100)+1) {
             player.currentHealth -= dmg;
             $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`)
+            $('.character-damage').text(`-${dmg}`);
             if(player.currentHealth <= 0) {
                 alert('You died! Luckily the gods favor you and have brought you back... your penalty is half of your experience.')
                 player.experience -= Math.floor(player.experience/2)
@@ -122,7 +135,7 @@ class Goblin {
                 $('.enemy-window').css('display', 'none');
             }
         } else {
-            alert('Enemy missed!')
+            $('.character-damage').text(`Miss`)
         }
     }
 }
@@ -147,7 +160,10 @@ class Skeleton {
         const dmg = Math.floor(Math.random()*(this.maxHit - this.minHit)) + this.minHit;
         if (enemy.accuracy > Math.floor(Math.random()*100)+1) {
             player.currentHealth -= dmg;
-            $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`)
+            $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
+            
+            $('.character-damage').text(`-${dmg}`);
+            
             if(player.currentHealth <= 0) {
                 alert('You died! Luckily the gods favor you and have brought you back... your penalty is half of your experience.')
                 player.experience -= Math.floor(player.experience/2)
@@ -158,7 +174,7 @@ class Skeleton {
                 $('.enemy-window').css('display', 'none');
             }
         } else {
-            alert('Enemy missed!')
+            $('.character-damage').text(`Miss`)
         }
     }
 }
@@ -184,6 +200,7 @@ class Troll{
         if (enemy.accuracy > Math.floor(Math.random()*100)+1) {
             player.currentHealth -= dmg;
             $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`)
+            $('.character-damage').text(`-${dmg}`);
             if(player.currentHealth <= 0) {
                 alert('You died! Luckily the gods favor you and have brought you back... your penalty is half of your experience.')
                 player.experience -= Math.floor(player.experience/2)
@@ -194,7 +211,7 @@ class Troll{
                 $('.enemy-window').css('display', 'none');
             }
         } else {
-            alert('Enemy missed!')
+            $('.character-damage').text(`Miss`)
         }
     }
 }
@@ -214,6 +231,10 @@ const setName = () => {
         $('.modal-name').css('display', 'none');
         player = new Player(playerName);
     }
+}
+
+const test = () => {
+    $('.enemy-damage').css('display', 'none');
 }
 
 const chooseMale = () => {
@@ -359,6 +380,10 @@ $('.round-button-troll-caves').on('click', ()=>{
     $('.map-modal').css('display', 'none')
     $('.tavern-options').css('display', 'none');
     $('.character-window').css('display', 'block');
+})
+
+$('.inventory-wrap').on('click', ()=>{
+    comingSoon()
 })
 
 const comingSoon = () => {
