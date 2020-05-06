@@ -89,6 +89,7 @@ class Player {
             alert('There is nothing to run from.')
         } else {
             $('.enemy-window').css('display', 'none');
+            $('.character-damage').text('');
             enemy = null;
         }
     }
@@ -273,6 +274,7 @@ const newEnemy = () => {
         $('.enemy-name').text(`Name: ${enemy.name}`);
         $('.enemy-level').text(`Level: ${enemy.level}`)
         $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
+        $('.character-damage').text('');
     } else if (changeLocation === 'Necropolis' && enemy === null) {
         enemy = new Skeleton(skeletonNames[Math.floor(Math.random()*skeletonNames.length-1)]);
         $('.enemy-portrait').css('background-image', 'url(images/Skeleton.png)');
@@ -280,6 +282,7 @@ const newEnemy = () => {
         $('.enemy-name').text(`Name: ${enemy.name}`);
         $('.enemy-level').text(`Level: ${enemy.level}`)
         $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
+        $('.character-damage').text('');
     } else if (changeLocation === 'Troll Caves' && enemy === null) {
         enemy = new Troll(trollNames[Math.floor(Math.random()*trollNames.length-1)]);
         $('.enemy-portrait').css('background-image', 'url(images/Troll.png)');
@@ -287,6 +290,7 @@ const newEnemy = () => {
         $('.enemy-name').text(`Name: ${enemy.name}`);
         $('.enemy-level').text(`Level: ${enemy.level}`)
         $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
+        $('.character-damage').text('');
     } else if (changeLocation === 'Tavern' && enemy === null) {
         alert('There are no enemies here.')
     } else {
