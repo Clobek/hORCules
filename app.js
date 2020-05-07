@@ -162,9 +162,7 @@ class Skeleton {
         if (enemy.accuracy > Math.floor(Math.random()*100)+1) {
             player.currentHealth -= dmg;
             $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
-            
-            $('.character-damage').text(`-${dmg}`);
-            
+            $('.character-damage').text(`-${dmg}`);   
             if(player.currentHealth <= 0) {
                 alert('You died! Luckily the gods favor you and have brought you back... your penalty is half of your experience.')
                 player.experience -= Math.floor(player.experience/2)
@@ -173,6 +171,7 @@ class Skeleton {
                 $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
                 enemy = null;
                 $('.enemy-window').css('display', 'none');
+                $('.character-damage').text('');
             }
         } else {
             $('.character-damage').text(`Miss`)
