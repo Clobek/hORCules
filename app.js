@@ -203,7 +203,6 @@ class Troll{
             $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`)
             $('.character-damage').text(`-${dmg}`);
             if(player.currentHealth <= 0) {
-                alert('You died! Luckily the gods favor you and have brought you back... your penalty is half of your experience.')
                 player.experience -= Math.floor(player.experience/2)
                 $('.character-experience').text(`Experience: ${player.experience}/${player.experienceToLevel}`);
                 player.currentHealth += player.maxHealth - player.currentHealth
@@ -211,6 +210,7 @@ class Troll{
                 enemy = null;
                 $('.enemy-window').css('display', 'none');
                 $('.character-damage').text('');
+                alert('You died! Luckily the gods favor you and have brought you back... your penalty is half of your experience.')
             }
         } else {
             $('.character-damage').text(`Miss`)
@@ -276,6 +276,7 @@ const newEnemy = () => {
         $('.enemy-level').text(`Level: ${enemy.level}`)
         $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
         $('.character-damage').text('');
+        $('.enemy-damage').text('');
     } else if (changeLocation === 'Necropolis' && enemy === null) {
         enemy = new Skeleton(skeletonNames[Math.floor(Math.random()*skeletonNames.length-1)]);
         $('.enemy-portrait').css('background-image', 'url(images/Skeleton.png)');
@@ -284,6 +285,7 @@ const newEnemy = () => {
         $('.enemy-level').text(`Level: ${enemy.level}`)
         $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
         $('.character-damage').text('');
+        $('.enemy-damage').text('');
     } else if (changeLocation === 'Troll Caves' && enemy === null) {
         enemy = new Troll(trollNames[Math.floor(Math.random()*trollNames.length-1)]);
         $('.enemy-portrait').css('background-image', 'url(images/Troll.png)');
@@ -291,7 +293,7 @@ const newEnemy = () => {
         $('.enemy-name').text(`Name: ${enemy.name}`);
         $('.enemy-level').text(`Level: ${enemy.level}`)
         $('.enemy-health').text(`Health: ${enemy.currentHealth}/${enemy.maxHealth}`)
-        $('.character-damage').text('');
+        $('.enemy-damage').text('');
     } else if (changeLocation === 'Tavern' && enemy === null) {
         alert('There are no enemies here.')
     } else {
