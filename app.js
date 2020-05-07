@@ -134,6 +134,7 @@ class Goblin {
                 $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
                 enemy = null;
                 $('.enemy-window').css('display', 'none');
+                $('.character-damage').text('');
             }
         } else {
             $('.character-damage').text(`Miss`)
@@ -209,6 +210,7 @@ class Troll{
                 $('.character-health').text(`Health: ${player.currentHealth}/${player.maxHealth}`);
                 enemy = null;
                 $('.enemy-window').css('display', 'none');
+                $('.character-damage').text('');
             }
         } else {
             $('.character-damage').text(`Miss`)
